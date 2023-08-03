@@ -8,4 +8,4 @@ This app includes a full working DB, Login, (ETC), Create a class, Adding studen
 
 # Open using Github Pages
 
-Link Here: TBD
+Link Here: https://dualhacks.onrender.com
