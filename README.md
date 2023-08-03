@@ -1,6 +1,6 @@
 # DualHacks
 
-This is a website based on helping education by creating a similar project to Google Classroom but more oriented to teaching students how to program
+This is a website based on helping education by creating a similar project to Google Classroom but more oriented to teaching students how to code
 
 # Features
 
