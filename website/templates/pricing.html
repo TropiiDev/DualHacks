@@ -41,4 +41,10 @@
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
+
+
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/pricing.js') }}"></script>
 {% endblock %}
