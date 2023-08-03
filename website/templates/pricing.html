@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Pricing{% endblock %}
+
+<!-- add css -->
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pricing.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="home">
+        <h1 class="homeName">Pricing</h1>
+    </div>
+    <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Personal</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">$15/mo</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Enterprise</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">$25/mo</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Custom</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Contact Support</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+{% endblock %}
