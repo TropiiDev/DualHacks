@@ -3,7 +3,7 @@
 let path = window.location.pathname;
 let pagevar = path.split("/");
 
-if (pagevar[1] == "home") {
+if (pagevar[1] == "") {
     // update the class of the home link to active
     document.getElementById("home").className = "nav-link active";
 } else if (pagevar[1] == "enroll") {
