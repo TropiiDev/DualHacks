@@ -10,17 +10,17 @@ pfpselector.onchange = function(event){
         const reader = new FileReader();
         var fileList = event.target.files;
         console.log('test')
-        reader.onload = function () {
-            Jimp.read(reader.result, function (err, test){
-                if (err) throw err;
-                test.resize(256, 256)
-                    .quality(50)                 
-                    .write(__dirname + "./new.jpg"); 
-            })
+        reader.onload = function (event) {
+            // Jimp.read(reader.result, function (err, test){
+            //     if (err) throw err;
+            //     test.resize(256, 256)
+            //         .quality(50)                 
+            //         .write("userpfp.png"); 
+            // })
             
-            document.getElementById('userpfp').src = __dirname + './new.jpg'
+            document.getElementById('userpfp').src = event.target.result
+            // console.log(document.getElementById('userpfp'))
+            // console.log('pain')
+        }
         reader.readAsDataURL(fileList[0])
     }
-}
-
-console.log('test')
