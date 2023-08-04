@@ -7,6 +7,6 @@
         <label for="username">Username</label>
         <input type="text" id="username">
         <label for="password">Password</label>
-        <input type="text" id="password" type="hidden">
+        <input name="password" type="text" id="password" type="hidden" readonly value=" ' . $user->username . ' ">
     </form>
 {% endblock %}
