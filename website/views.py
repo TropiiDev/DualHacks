@@ -21,3 +21,7 @@ def courses():
 @views.route('/enroll')
 def enroll():
     return render_template('enroll.html')
+
+@views.route('/exampleCourse')
+def example_course():
+    return render_template('exampleCourse.html')

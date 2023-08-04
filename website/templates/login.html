@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
+
 {% block content %}
     <h1>Login</h1>
     <form>
         <label for="username">Username</label>
-        <input type="text" id="username">
+        <input class="form-control" id="validationDefault01" type="text">
         <label for="password">Password</label>
-        <input name="password" id="password" type="hidden" readonly value=" ' . $user->username . ' ">
+        <input class="form-control" id="validationDefault01" type="text" >
     </form>
+    <br>
+    <button type="button" class="btn btn-primary">Login</button>
 {% endblock %}
