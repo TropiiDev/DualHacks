@@ -19,6 +19,7 @@ def login():  # login
 
                 if check_pass:
                     flash('Logged in')
+                    login_user(user=user, remember=True)
                 else:
                     flash('Incorrect username or password!')
             pass
