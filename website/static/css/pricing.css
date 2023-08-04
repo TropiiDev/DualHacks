@@ -6,12 +6,27 @@
     color: #000000;
     margin-top: 50px;
     margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .card {
-    display: flex;
-    flex-direction: row;
     width: 18rem;
+    margin: 20px;
+}
+
+.sliderbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .switch {
