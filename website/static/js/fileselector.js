@@ -11,16 +11,15 @@ pfpselector.onchange = function(event){
         var fileList = event.target.files;
         console.log('test')
         reader.onload = function (event) {
-            // Jimp.read(reader.result, function (err, test){
-            //     if (err) throw err;
-            //     test.resize(256, 256)
-            //         .quality(50)                 
-            //         .write("userpfp.png"); 
-            // })
-            
-            document.getElementById('userpfp').src = event.target.result
-            // console.log(document.getElementById('userpfp'))
-            // console.log('pain')
+            Jimp.read(reader.result, function (err, test){
+                if (err) throw err;
+                test.resize(256, 256)
+                    .quality(50)
+                    .getBase64(Jimp.MIME_PNG, function (err, base64) {  // get base64
+                        if (err) throw err;
+                        document.getElementById('userpfp').src = base64;  // set src of new image
+                    });
+            })
         }
         reader.readAsDataURL(fileList[0])
     }
