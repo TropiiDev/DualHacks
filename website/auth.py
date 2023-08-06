@@ -38,8 +38,8 @@ def logout():
     logout_user()
     return redirect(url_for('views.home'))
 
-@auth.route('/signup', methods=['GET', 'POST'])
-def sign_up():
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
     if request.method == 'POST':
         email = request.form.get('email')
         username = request.form.get('validationCustomUsername')

@@ -14,10 +14,12 @@ def pricing():
     return render_template("pricing.html")
 
 @views.route('/classes')
+@login_required
 def classes():
     return render_template('classes.html')
 
 @views.route('courses')
+@login_required
 def courses():
     return render_template('courses.html')
 
