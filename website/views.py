@@ -22,7 +22,7 @@ def classes():
 @views.route('courses')
 @login_required
 def courses():
-    return render_template('courses.html')
+    return render_template('courses.html', num_cards=5)
 
 @views.route('/enroll')
 def enroll():
