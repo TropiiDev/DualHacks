@@ -18,6 +18,24 @@ pfpselector.onchange = function(event){
                     .getBase64(Jimp.MIME_PNG, function (err, base64) {  // get base64
                         if (err) throw err;
                         document.getElementById('userpfp').src = base64;  // set src of new image
+                        console.log(base64)
+                        // var xmlHttp = new XMLHttpRequest();
+                        // // https://stackoverflow.com/questions/247483/http-get-request-in-javascript
+                        // xmlHttp.onreadystatechange = function() { 
+                        //     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        //         callback(xmlHttp.responseText);
+                        // }
+                        // xmlHttp.open('GET', '/setprofilepic', true, )
+                        // xmlHttp.send('null')
+                        fetch(
+                            '/setprofilepic',
+                            {
+                                method:'GET',
+                                headers:{
+                                    'url':base64
+                                }
+                            }
+                        )
                     });
             })
         }

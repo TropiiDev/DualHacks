@@ -37,11 +37,13 @@ def about():
 
 @views.route('/setprofilepic')
 def setprofilepic():
-    current_user.profile_picture = request.args.get('url')
-    print(f'profile pic set to {request.args.get("url")}')
+    current_user.profile_picture = request.headers.get('url')
+    print(current_user.username)
+    # print(f'{current_user.profile_picture}')
     return f'set to {current_user.profile_picture}'
 
 @views.route('/getprofilepic')
 def getprofilepic():
-    print(current_user.profile_picture)
+    print(current_user.username)
+    print(current_user.profile_picture, 'sadness')
     return current_user.profile_picture
