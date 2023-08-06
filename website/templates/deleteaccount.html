@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Delete{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Delete</h1>
+    <form method="post">
+        <label for="email">Email</label>
+        <input class="form-control" id="validationDefault01" type="text" name='email' required>
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+{% endblock %}

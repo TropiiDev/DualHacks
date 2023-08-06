@@ -4,11 +4,8 @@
 
 
 {% block content %}
-<h1>User Not Logged In</h1>
-<img id="userpfp">
-<input type=file id="pfpfileselector" accept=".png, .jpeg, .jpg">
-<p>Change profile picture</p>
+<h1>Welcome, {{ user.username }}</h1>
+<p>Here is your profile picture:</p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jimp/0.22.10/jimp.min.js"></script>
-<script src="../static/js/fileselector.js"></script>
+<img src="{{ pfp }}" alt="Profile Picture" class="rounded-circle" style="width: 8rem; height: 8rem;">
 {% endblock %}

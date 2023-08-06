@@ -26,6 +26,7 @@ def login():  # login
                 if check_pass:
                     flash('Logged in')
                     login_user(user=user, remember=True)
+                    return redirect(url_for('views.user_page'))
                 else:
                     flash('Incorrect username or password!')
             pass
@@ -44,6 +45,7 @@ def register():
         email = request.form.get('email')
         username = request.form.get('validationCustomUsername')
         password = request.form.get('password')
+        pfp = request.files['pfp']
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -55,13 +57,23 @@ def register():
         elif len(password) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
-            new_user.profile_picture = '../empty_pfp.jpg'
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user, remember=True)
-            flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            if pfp.filename == '':
+                new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+                new_user.profile_picture = url_for('static', filename='uploads/empty_pfp.jpg')
+                db.session.add(new_user)
+                db.session.commit()
+                login_user(new_user, remember=True)
+                flash('Account created!', category='success')
+                return redirect(url_for('views.home'))
+            else:
+                pfp.save(os.path.join('website/static/uploads', username + '.jpg'))
+                new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+                new_user.profile_picture = url_for('static', filename='uploads/' + username + '.jpg')
+                db.session.add(new_user)
+                db.session.commit()
+                login_user(new_user, remember=True)
+                flash('Account created!', category='success')
+                return redirect(url_for('views.home'))
 
     return render_template("signup.html", user=current_user)
 
@@ -87,3 +99,17 @@ def reset_pass():
             smtp.send_message(msg)
 
     return render_template("resetpass.html")
+
+@auth.route('/delete-account', methods=['GET', 'POST'])
+def delete_account():
+    if request.method == "POST":
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            flash("Account deleted.", category="success")
+            return redirect(url_for('views.home'))
+        else:
+            flash("Account does not exist.", category="error")
+    return render_template("deleteaccount.html")

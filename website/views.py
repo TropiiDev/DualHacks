@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, url_for
 from flask_login import login_required
 from flask import Blueprint, render_template, request
+import os
 
 views = Blueprint('views', __name__)
 from flask_login import login_user, login_required, logout_user, current_user
@@ -34,21 +35,16 @@ def example_course():
 @views.route('/user')
 @login_required
 def user_page():
-    return render_template('user_page.html')
+    # loop through static/uploads and find the file that matches the current user's username
+    # if the file exists, set the profile picture to that file
+    # else, set the profile picture to the default which is empty_pfp.jpg
+    for file in os.listdir('website/static/uploads'):
+        if file == current_user.username + '.jpg':
+            current_user.profile_picture = url_for('static', filename='uploads/' + current_user.username + '.jpg')
+        else:
+            current_user.profile_picture = url_for('static', filename='uploads/empty_pfp.jpg')
+    return render_template('user_page.html', pfp=current_user.profile_picture, user=current_user)
 
 @views.route('/about')
 def about():
     return render_template('about.html', user=current_user)
-
-@views.route('/setprofilepic')
-def setprofilepic():
-    current_user.profile_picture = request.headers.get('url')
-    print(current_user.username)
-    # print(f'{current_user.profile_picture}')
-    return f'set to {current_user.profile_picture}'
-
-@views.route('/getprofilepic')
-def getprofilepic():
-    print(current_user.username)
-    print(current_user.profile_picture, 'sadness')
-    return current_user.profile_picture
