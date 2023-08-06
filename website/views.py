@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, url_for
 from flask_login import login_required
 from flask import Blueprint, render_template, request
+import json
 import os
 
 views = Blueprint('views', __name__)
@@ -22,7 +23,9 @@ def classes():
 @views.route('courses')
 @login_required
 def courses():
-    return render_template('courses.html', num_cards=5)
+    course_list = json.load(open(os.path.abspath('instance\courses.json')))
+    print(course_list['Users'])
+    return render_template('courses.html', course_list=course_list)
 
 @views.route('/enroll')
 def enroll():
