@@ -15,6 +15,10 @@
         rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
         crossorigin="anonymous" 
         />
+        <link
+        href="../../website/static/css/base.css"
+        rel="stylesheet"
+        >
 
         <title>Flask App - {% block title %}{% endblock %}</title>
         {% block head %}{% endblock %}
@@ -43,6 +47,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="courses" href="/courses">Courses</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="about" href="/about">About</a>
                   </li>
                   {% if current_user.is_authenticated %}
                     <li class="nav-item">
