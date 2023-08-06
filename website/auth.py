@@ -22,7 +22,7 @@ def login():  # login
         if user is not None:
             if user.password:
                 check_pass = check_password_hash(pwhash=user.password, password=password)
-
+                print(user.profile_picture, 'profile')
                 if check_pass:
                     flash('Logged in')
                     login_user(user=user, remember=True)
@@ -56,6 +56,7 @@ def sign_up():
             flash('Password must be at least 7 characters.', category='error')
         else:
             new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+            new_user.profile_picture = '../empty_pfp.jpg'
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
