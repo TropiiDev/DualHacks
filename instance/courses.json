@@ -1,0 +1,15 @@
+{
+    "Users":{
+        "BlueRobin":{
+            "CoursesMade":{
+                "Epic Title":{
+                    "Title":"Epic Title",
+                    "Text":"This is an example course"
+                }
+            },
+            "CoursesIn":[
+                "Epic Title"
+            ]
+        }
+    }
+}

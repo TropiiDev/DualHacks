@@ -1,7 +1,11 @@
-.cards{
-    margin-top: 5px;
+.cards {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.card {
+    width: 18rem;
+    margin: 20px;
 }
