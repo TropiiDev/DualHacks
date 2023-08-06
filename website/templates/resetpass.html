@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Reset your password</h1>
+    <form class="column g-3 needs-validation" method="POST">
+        <div class="col-md-4">
+          <label for="email1" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">📫</span>
+            <input type="email" class="inputField form-control" id="validationCustomEmail" name="email" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Please choose a Email.
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Reset Password</button>
+        </div>
+      </form>
+      
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/resetpass.js') }}"></script>
+{% endblock %}

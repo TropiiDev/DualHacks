@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required
 
 views = Blueprint('views', __name__)
 
@@ -27,6 +28,7 @@ def example_course():
     return render_template('exampleCourse.html')
 
 @views.route('/user')
+@login_required
 def user_page():
     return render_template('user_page.html')
 

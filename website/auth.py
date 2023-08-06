@@ -3,6 +3,12 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db   ##means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
+import smtplib
+from email.message import EmailMessage
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 auth = Blueprint('auth', __name__)
 
@@ -28,8 +34,9 @@ def login():  # login
     return render_template("login.html")
 
 @auth.route('/logout')
-def pricing():
-    return render_template("logout.html")
+def logout():
+    logout_user()
+    return redirect(url_for('views.home'))
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def sign_up():
@@ -56,3 +63,26 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     return render_template("signup.html", user=current_user)
+
+@auth.route('/reset-password', methods=['GET', 'POST'])
+def reset_pass():
+    if request.method == "POST":
+        flash("Password reset link sent to your email.", category="success")
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        email_address = "codebluical@gmail.com"
+        email_password = "BluicalCodeTest55"
+
+        # create email
+        msg = EmailMessage()
+        msg['Subject'] = "Reset your password!"
+        msg['From'] = email_address
+        msg['To'] = user.email
+        msg.set_content("Click the link below to reset your password.\n\n" + "http://127.0.0.1:5000/reset/" + user.username + "/" + user.email)
+
+        # send email
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(user=email_address, password=email_password)
+            smtp.send_message(msg)
+
+    return render_template("resetpass.html")
