@@ -1,0 +1,29 @@
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.head img {
+    margin-top: 15px;
+}
+
+.bodyHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.submit button {
+    margin-top: 5px;
+    margin-left: 15px;
+}
