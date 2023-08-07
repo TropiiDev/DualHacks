@@ -8,11 +8,13 @@
 
 {% block content %}
     <h1>Courses</h1>
+    <div class="cards">
     {% for user in course_list['Users'].keys() %}
-      <div class="cards">
-        
+
+      {% set test=namespace(value=0) %}
+   
       {% for card in course_list['Users'][user]['CoursesMade'].keys() %}
-      {% if card is not none %}
+      
       <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">{{card}}</h5>
@@ -22,9 +24,19 @@
             <a href="#" class="card-link">Another link</a>
           </div>
         </div>
+      
+      
+      {% set test.value = 1+test.value %}
+      <!-- {{test.value}} -->
+      {% if test.value % 5 == 0 %}
+      <br>
+      {{'cut'}}
       {% endif %}
 
-  </div>
+
   {% endfor %}
+
   {% endfor %}
+</div>
 {% endblock %}
+
