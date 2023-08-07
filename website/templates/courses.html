@@ -1,42 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Courses{% endblock %}
+{% block title %}Classes{% endblock %}
+
 
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pricing.css') }}">
 {% endblock %}
 
 {% block content %}
     <h1>Courses</h1>
+    
+    {% set num_cards = namespace(cards=0) %}
+    {% for user in course_list['Users'] %}
+    {% for card in course_list['Users'][user]['CoursesMade'] %}
+    {% if num_cards.cards % 5 == 0%}
     <div class="cards">
-    {% for user in course_list['Users'].keys() %}
-
-      {% set test=namespace(value=0) %}
-   
-      {% for card in course_list['Users'][user]['CoursesMade'].keys() %}
-      
-      <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">{{card}}</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
+    {% endif %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
         </div>
-      
-      
-      {% set test.value = 1+test.value %}
-      <!-- {{test.value}} -->
-      {% if test.value % 5 == 0 %}
-      <br>
-      {{'cut'}}
-      {% endif %}
-
-
-  {% endfor %}
-
-  {% endfor %}
+      </div>
+    {% set num_cards.cards = num_cards.cards + 1 %}
+    {% if num_cards.cards % 5 == 0%}
+    </div>
+    <br>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
-
