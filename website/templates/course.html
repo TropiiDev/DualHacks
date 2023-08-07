@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Classes{% endblock %}
+
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pricing.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<h2>{{author}}</h2>
+<p>{{text}}</p>
+{% endblock %}

@@ -51,3 +51,16 @@ def user_page():
 @views.route('/about')
 def about():
     return render_template('about.html', user=current_user)
+
+@views.route('/course')
+def course():
+    user = request.args['user'].replace('%20', ' ')
+    name = request.args['name'].strip("'").replace('%20', ' ')
+    print(user, name)
+    try:
+        course_ = json.load(open(os.path.abspath('instance\courses.json')))['Users'][user]["CoursesMade"][name]
+    except KeyError:
+        return "Invalid course. If this is a mistake, please contact a developer."
+    text= course_['Text']
+    title = name
+    return render_template('course.html', text=text, title=title, user=user)

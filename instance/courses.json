@@ -2,29 +2,8 @@
     "Users":{
         "BlueRobin":{
             "CoursesMade":{
-                "Epic Title":{
-                    "Title":"Epic Title",
-                    "Text":"This is an example course"
-                },
-                "JoeRogan":{
-                    "Title":"How to be cool",
-                    "Text": "This is a very cool course"
-                },
-                "JoeRog4an":{
-                    "Title":"How to be cool",
-                    "Text": "This is a very cool course"
-                },
-                "JoeRoga3n":{
-                    "Title":"How to be cool",
-                    "Text": "This is a very cool course"
-                },
-                "JoeRogan2":{
-                    "Title":"How to be cool",
-                    "Text": "This is a very cool course"
-                },
-                "JoeRogan1":{
-                    "Title":"How to be cool",
-                    "Text": "This is a very cool course"
+                "How to make basic Flask Server":{
+                    "Text":"This is how to make a basic flask server."
                 }
             },
             "CoursesIn":[
