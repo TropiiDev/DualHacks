@@ -13,7 +13,7 @@
     {% set num_cards = namespace(cards=0) %}
     {% for user in course_list['Users'] %}
     {% for card in course_list['Users'][user]['CoursesMade'] %}
-    {% if num_cards.cards % 5 == 0%}
+    {% if num_cards.cards % 4 == 0%}
     <div class="cards">
     {% endif %}
     <div class="card" style="width: 18rem;">
@@ -24,8 +24,9 @@
           <a href="/course?name={{card}}&user={{user}}" class="card-link">Course link</a>
         </div>
       </div>
+      <!-- https://stackoverflow.com/questions/45916196/jinja-variable-inside-string-inside-if-statement?test=%20yo -->
     {% set num_cards.cards = num_cards.cards + 1 %}
-    {% if num_cards.cards % 5 == 0%}
+    {% if num_cards.cards % 4 == 0%}
     </div>
     <br>
     {% endif %}
