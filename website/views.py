@@ -23,7 +23,7 @@ def classes():
 @views.route('courses')
 @login_required
 def courses():
-    course_list = json.load(open(os.path.abspath('instance/courses.json')))
+    course_list = json.load(open(os.path.abspath('..\instance\courses.json')))
     print(course_list['Users'])
     return render_template('courses.html', course_list=course_list)
 
@@ -58,7 +58,7 @@ def course():
     name = request.args['name'].strip("'").replace('%20', ' ')
     print(user, name)
     try:
-        course_ = json.load(open(os.path.abspath('instance/courses.json')))['Users'][user]["CoursesMade"][name]
+        course_ = json.load(open(os.path.abspath('..\instance\courses.json')))['Users'][user]["CoursesMade"][name]
     except KeyError:
         return "Invalid course. If this is a mistake, please contact a developer."
     texts= course_['Text'].split('\n')
@@ -73,7 +73,7 @@ def course_creation():
         course_description = request.form.get('description')
 
         if (course_title is not None) and (course_main_text is not None) and (course_description is not None) and (course_main_text and course_title and course_description):
-            current_courses = json.load(open(os.path.abspath('instance/courses.json')))
+            current_courses = json.load(open(os.path.abspath('..\instance\courses.json')))
             try:
                 if current_courses['Users'][current_user.username] is not None:
                     current_courses['Users'][current_user.username]['CoursesMade'][course_title] = {
@@ -87,7 +87,7 @@ def course_creation():
                             }
                         }
                     }
-            json.dump(current_courses, open(os.path.abspath('instance/courses.json'), 'w'), indent=4)
+            json.dump(current_courses, open(os.path.abspath('..\instance\courses.json'), 'w'), indent=4)
             flash('Created new course!')
         else:
             flash('Not all fields filled out!')
