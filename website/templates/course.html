@@ -23,7 +23,6 @@
 <h4>{{text[4:]}}</h4>
 {% elif text.startswith('```') and text[-3:]=="```" and (not text.__len__()==3)%}
 <code>{{text[3:-3]}}</code>
-{{'pain'}}
 {% elif text.startswith(' ```') and text[-3:]=="```" and (not text.__len__()==3)%}
 <code>{{text[4:-3]}}</code>
 {% elif text.startswith('```') %}
@@ -42,7 +41,7 @@
 
 {% if text.endswith('```') %}
 </pre></code>
-{% set incodeblock = namespace(true=1) %}
+{% set incodeblock.true = 0 %}
 
 {% else %}
 {{text}}

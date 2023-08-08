@@ -17,11 +17,12 @@
     {% if num_cards.cards % 4 == 0%}
     <div class="cards">
     {% endif %}
+    {% set courseinfo=course_list['Users'][user]['CoursesMade'][card] %}
     <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{card}}</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">{{user}}</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">{{courseinfo['Description']}}</p>
           <a href="/course?name={{card}}&user={{user}}" class="card-link">Course link</a>
         </div>
       </div>

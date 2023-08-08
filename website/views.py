@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
 from flask import Blueprint, render_template, request
 import json
@@ -69,21 +69,26 @@ def course():
 def course_creation():
     if request.method == "POST":
         course_title = request.form.get('beans')
-        course_main_text = request.form.get('moreBeans')
+        course_main_text = request.form.get('moreBeans').replace('\r', '')
+        course_description = request.form.get('description')
 
-        if (course_title is not None) and (course_main_text is not None):
+        if (course_title is not None) and (course_main_text is not None) and (course_description is not None) and (course_main_text and course_title and course_description):
             current_courses = json.load(open(os.path.abspath('instance\courses.json')))
             try:
                 if current_courses['Users'][current_user.username] is not None:
                     current_courses['Users'][current_user.username]['CoursesMade'][course_title] = {
-                        "Text": course_main_text
+                        "Text": course_main_text,
+                        'Description':course_description
                     }
             except KeyError:
                     current_courses['Users'][current_user.username] = {
-                        "CoursesMade": {course_title: {"Text": course_main_text
+                        "CoursesMade": {course_title: {"Text": course_main_text,
+                                                       'Description':course_description
                             }
                         }
                     }
             json.dump(current_courses, open(os.path.abspath('instance\courses.json'), 'w'), indent=4)
-
+            flash('Created new course!')
+        else:
+            flash('Not all fields filled out!')
     return render_template('course_creation.html')

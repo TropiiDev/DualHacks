@@ -3,24 +3,14 @@
         "BlueRobin": {
             "CoursesMade": {
                 "How to make basic Flask Server": {
-                    "Text": "# This is how to make a basic flask server. \n## The below is a great video! \n https://www.youtube.com/embed/mqhxxeeTbu0\n### Here's how to start \n First, you install Flask.\n If you use PIP use the following:\n ```pip install flask```\n After installing flask, you need to instance the app class. \n Taken from [the flask documentation](https://flask.palletsprojects.com/en/2.3.x/tutorial/factory/)\n```\nimport os\nfrom flask import Flask\ndef create_app(test_config=None):\n# create and configure the app\napp = Flask(__name__,instance_relative_config=True)\napp.config.from_mapping(\nSECRET_KEY='dev',\nDATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),\n)\nif test_config is None:\n# load the instance config, if it exists, when not testing\napp.config.from_pyfile('config.py', silent=True)\nelse:\n# load the testconfig if passed in\napp.config.from_mapping(test_config)\n# ensure the instance folder exists\ntry:\nos.makedirs(app.instance_path)\nexcept OSError:\npass\n# a simple page that sayshello\n@app.route('/hello')\ndef hello():\nreturn 'Hello, World!'\nreturn app\n```"
+                    "Text": "# This is how to make a basic flask server. \n## The below is a great video! \n https://www.youtube.com/embed/mqhxxeeTbu0\n### Here's how to start \n First, you install Flask.\n If you use PIP use the following:\n ```pip install flask```\n After installing flask, you need to instance the app class. \n Taken from [the flask documentation](https://flask.palletsprojects.com/en/2.3.x/tutorial/factory/)\n```\nimport os\nfrom flask import Flask\ndef create_app(test_config=None):\n# create and configure the app\napp = Flask(__name__,instance_relative_config=True)\napp.config.from_mapping(\nSECRET_KEY='dev',\nDATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),\n)\nif test_config is None:\n# load the instance config, if it exists, when not testing\napp.config.from_pyfile('config.py', silent=True)\nelse:\n# load the testconfig if passed in\napp.config.from_mapping(test_config)\n# ensure the instance folder exists\ntry:\nos.makedirs(app.instance_path)\nexcept OSError:\npass\n# a simple page that sayshello\n@app.route('/hello')\ndef hello():\nreturn 'Hello, World!'\nreturn app\n```",
+                    "Description": "This course is about how to make a flask server."
                 },
-                "a": {
-                    "Text": "a"
-                },
-                "JoeRogan Course": {
-                    "Text": "lmao"
-                },
-                "yoo wasup": {
-                    "Text": "lmao"
-                },
-                "TestIndents": {
-                    "Text": "# yooo\r\n\r\n\r\nhi"
+                "This is how to create a course": {
+                    "Text": "# This is a header\nThis is how to make a header:\n```# header```\n\n## This is a smaller header\nThis is how to make a smaller header:\n```## header```\n\n### This is an even smaller header\nThis is how to make an even smaller header\n```### header```\n\n#### This is the smallest header\nThis is how to create the smallest header:\n```#### header```\n\n\nThis is an inline code block: \n```print('hello!')```\n\nThis is a code block:\n```\nprint('hello')\n#super complex\n```\nThis is a youtube video:\n\nhttps://www.youtube.com/embed/mqhxxeeTbu0\n\nHere's how to embed that video:\n```https://www.youtube.com/embed/mqhxxeeTbu0```",
+                    "Description": "This is how to make a course on this website!"
                 }
-            },
-            "CoursesIn": [
-                "Epic Title"
-            ]
+            }
         }
     }
 }
