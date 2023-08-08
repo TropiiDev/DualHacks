@@ -1,3 +1,4 @@
+let path = window.location.pathname;
 let pagevar = path.split("/");
 
 if (pagevar[1] == "") {
