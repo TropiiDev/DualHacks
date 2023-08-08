@@ -10,5 +10,19 @@
 {% block content %}
 <h1>{{title}}</h1>
 <h2>{{author}}</h2>
+{% for text in texts %}
+
+{% if text.startswith('## ') %}
+<h2>{{text[2:]}}</h2>
+{% if text.startswith('### ') %}
+<h3>{{text[2:]}}</h2>
+{% if text.startswith('#### ') %}
+<h4>{{text[2:]}}</h2>
+{% elif not text.strip(' ').startswith('https://www.youtube.com/embed/') %}
 <p>{{text}}</p>
+{% else %}
+<iframe width="560" height="315" src="{{text}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+{% endif %}
+
+{% endfor %}
 {% endblock %}

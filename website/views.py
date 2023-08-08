@@ -61,6 +61,6 @@ def course():
         course_ = json.load(open(os.path.abspath('instance\courses.json')))['Users'][user]["CoursesMade"][name]
     except KeyError:
         return "Invalid course. If this is a mistake, please contact a developer."
-    text= course_['Text']
+    texts= course_['Text'].split('\n')
     title = name
-    return render_template('course.html', text=text, title=title, user=user)
+    return render_template('course.html', texts=texts, title=title, user=user)
