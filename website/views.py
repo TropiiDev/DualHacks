@@ -64,3 +64,7 @@ def course():
     texts= course_['Text'].split('\n')
     title = name
     return render_template('course.html', texts=texts, title=title, user=user)
+
+@views.route('course_creation')
+def course_creation():
+    return render_template('course_creation.html')

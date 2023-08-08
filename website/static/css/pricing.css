@@ -88,3 +88,33 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+h1{
+    text-align:right;
+    font-size:800%;
+}
+#within{
+    text-align:left;
+    font-size:400%;
+}
+h2{
+    font-size:300%;
+}
+h3{
+    font-size:200%;
+}
+h4{
+    font-size:100%;
+}
+code{
+    font-size:100%;
+}
+pre{
+    line-height:3px;
+}
+#createCourse{
+    text-align:right;
+    justify-content: right;
+    align-content:right;
+    float:right;
+}

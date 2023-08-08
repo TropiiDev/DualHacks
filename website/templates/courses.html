@@ -9,6 +9,7 @@
 
 {% block content %}
     <h1>Courses</h1>
+    <a class="btn btn-primary" href="/course_creation" role="button" id="createCourse">Create A Course</a>
     
     {% set num_cards = namespace(cards=0) %}
     {% for user in course_list['Users'] %}
