@@ -118,3 +118,12 @@ pre{
     align-content:right;
     float:right;
 }
+#mainText{
+    margin: 100px;
+    width:1000px;
+    height:400px;
+}
+#titleInput{
+    margin: 100px;
+    width:1000px;
+}

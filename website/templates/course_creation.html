@@ -8,4 +8,21 @@
 {% endblock %}
 
 {% block content %}
+<h1>Create A Course</h1>
+<form method="POST">
+    <div class="input-group mb-3" id="titleInput">
+        <input type="text" name="beans" id="beans" for="beans" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">Title</span>
+        </div>
+      </div>
+<div class="input-group" id="mainText">
+    <div id='moreBeans' class="input-group-prepend">
+      <span id='moreBeans' class="input-group-text">Main Text</span>
+    </div>
+    <textarea id='moreBeans' name="moreBeans" class="form-control" aria-label="Main Text"></textarea>
+  </div>
+
+  <input class="btn btn-primary" type="submit" value="Submit">
+</form>
 {% endblock %}

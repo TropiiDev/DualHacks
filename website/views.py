@@ -65,6 +65,25 @@ def course():
     title = name
     return render_template('course.html', texts=texts, title=title, user=user)
 
-@views.route('course_creation')
+@views.route('course_creation', methods=['GET', 'POST'])
 def course_creation():
+    if request.method == "POST":
+        course_title = request.form.get('beans')
+        course_main_text = request.form.get('moreBeans')
+
+        if (course_title is not None) and (course_main_text is not None):
+            current_courses = json.load(open(os.path.abspath('instance\courses.json')))
+            try:
+                if current_courses['Users'][current_user.username] is not None:
+                    current_courses['Users'][current_user.username]['CoursesMade'][course_title] = {
+                        "Text": course_main_text
+                    }
+            except KeyError:
+                    current_courses['Users'][current_user.username] = {
+                        "CoursesMade": {course_title: {"Text": course_main_text
+                            }
+                        }
+                    }
+            json.dump(current_courses, open(os.path.abspath('instance\courses.json'), 'w'), indent=4)
+
     return render_template('course_creation.html')
